@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form validation</title>
+</head>
+<body>
+  <form id="myForm" onsubmit="validateForm(event)">
+    <label for="name">Name:</label>
+    <input type="text" id="name" required><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" required><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" required><br>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <div id="message"></div>
+
+
+  <script>
+    
+    function validateForm(event) {
+  event.preventDefault(); // Prevent form submission for now
+
+  // Get form field values
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  // Validate name (must not be empty)
+  if (name.trim() === "") {
+    showMessage("Name field cannot be empty.", "error");
+    return;
+  }
+
+  // Validate email (must be a valid email address)
+  if (!isValidEmail(email)) {
+    showMessage("Invalid email address.", "error");
+    return;
+  }
+
+  // Validate password (must be at least 8 characters long)
+  if (password.length < 8) {
+    showMessage("Password must be at least 8 characters long.", "error");
+    return;
+  }
+
+  // If all validations pass, show success message and submit the form
+  showMessage("Form submitted successfully!", "success");
+  document.getElementById("myForm").submit();
+}
+
+function isValidEmail(email) {
+  // A simple email validation regex
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
+function showMessage(message, type) {
+  const messageDiv = document.getElementById("message");
+  messageDiv.textContent = message;
+  messageDiv.className = type;
+}
+
+  
+      
+      
+      
+      
+      
+      
+
+  </script>
+
+</body>
+</html>
+
+
