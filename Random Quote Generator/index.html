@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RQG</title>
+    
+</head>
+
+<body>
+    <div id="display">
+        <p id="quote"></p>
+        <p id="author"></p>
+    </div>
+    <button id="btn" onclick="changeQuote()">change</button>
+
+    <script>
+        const quote = [
+            {
+                quoteText: "Lo1em, ipsum dolor sit amet consectetur adipisicing elit. Veniam, expedita.",
+                author: "jeams"
+            },
+            {
+                quoteText: "Lo2em, ipsum dolor sit amet consectetur adipisicing elit. Veniam, expedita.",
+                author: "same"
+            },
+            {
+                quoteText: "Lo3em, ipsum dolor sit amet consectetur adipisicing elit. Veniam, expedita.",
+                author: "other"
+            },
+            {
+                quoteText: "Lo4em, ipsum dolor sit amet consectetur adipisicing elit. Veniam, expedita.",
+                author: "aaa jeams"
+            },
+            {
+                quoteText: "Lo5em, ipsum dolor sit amet consectetur adipisicing elit. Veniam, expedita.",
+                author: "qqqqsame"
+            },
+            {
+                quoteText: "Lo6em, ipsum dolor sit amet consectetur adipisicing elit. Veniam, expedita.",
+                author: "oopp other"
+            }
+        ]
+
+        
+        const quoteBox = document.getElementById('quote')
+        const authorBox = document.getElementById('author')
+        const btn = document.getElementById('btn')
+        
+        
+
+        function changeQuote(){
+            const randomNumber = Math.floor(Math.random()*quote.length)
+            
+            quoteBox.innerText = quote[randomNumber].quoteText
+            authorBox.innerText = quote[randomNumber].author;
+            
+
+        }
+
+
+
+
+
+    </script>
+</body>
+
+</html>
