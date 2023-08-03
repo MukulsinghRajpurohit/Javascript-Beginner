@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //Question: Create a Bank class that can manage multiple BankAccount instances.
+        // The Bank class should have an array property accounts to store all accounts.
+        // Add methods addAccount(accountNumber, initialBalance), getAccount(accountNumber),
+        // and totalBalance() to add new accounts, retrieve an account by account number, and 
+        //calculate the total balance across all accounts, respectively.
+        //Test the Bank class by adding three accounts with account numbers 
+        //"12345," "67890," and "54321," each with initial balances 1000, 2000, and 1500, respectively. 
+        //Then, log the total balance in the bank.
+        class Bank {
+            constructor() {
+                this.account = []
+            }
+            addAccount(accountNumber, initialBalance) {
+
+                const newAccount = { accountNumber, balance: initialBalance }
+                this.account.push(newAccount)
+
+
+            }
+            getAccount(accountNumber) {
+                return this.account.find((function (account) {
+                    return account.accountNumber === accountNumber;
+                }))
+            }
+            totalBalance() {
+                let totalBalance = 0;
+                return this.accounts.reduce((total, account) => total + account.balance, 0);
+
+            }
+        }
+        const bank = new Bank();
+
+// Add three accounts with account numbers and initial balances
+bank.addAccount("12345", 1000);
+bank.addAccount("67890", 2000);
+bank.addAccount("54321", 1500);
+
+// Log the total balance in the bank
+console.log(bank.totalBalance()); // Output: 4500
+
+    </script>
+</body>
+
+</html>
