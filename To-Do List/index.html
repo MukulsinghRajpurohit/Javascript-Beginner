@@ -1,25 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TO</title>
-</head>
-<body>
-    <script>
-        const todoList = ["Hello","hi"]
+<html>
 
-        function add(data){
-            todoList.push(data)
+<head>
+    <title>Document Object Model:30 Days Of JavaScript</title>
+</head>
+
+<body>
+    <input type="text" name="" id="text">
+    <button id="submit">Add</button>
+    <ul id="display">
+
+    </ul>
+
+    <script>
+        const enterText = document.getElementById('text')
+        const add = document.getElementById('submit')
+        const display = document.getElementById('display')
+
+        let list = ['coffee', 'hello', 'dinner']
+
+        add.addEventListener('click', () => {
+            let newTodo = enterText.value
+            if (newTodo.trim() !== '') {
+                list.push(newTodo);
+                console.log(list);
+                render(newTodo)
+
+            }
+
+        })
+        function render(newTodo, i) {
+            let title = document.createElement('li')
+            title.className = 'title'
+            title.style.fontSize = '24px'
+            title.textContent = newTodo
+            console.log(title)
+            display.appendChild(title)
+
+
+            let deletbtn = document.createElement('button')
+            deletbtn.textContent = 'delete'
+            title.appendChild(deletbtn)
+            deletbtn.addEventListener('click', () => {
+                list.splice(i, 1)
+                display.removeChild(title)
+            })
+
         }
-        add("by")
-        function remove(data){
-            todoList.pop(data)
+
+
+
+
+        for (let i = 0; i < list.length; i++) {
+
+            render(list[i], i)
         }
-        remove(todoList[1])
-        console.log(todoList)
+
+
 
     </script>
-    
 </body>
+
 </html>
