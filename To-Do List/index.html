@@ -7,6 +7,7 @@
 
 <body>
     <input type="text" name="" id="text">
+    <input type="date" id="date">
     <button id="submit">Add</button>
     <ul id="display">
 
@@ -16,26 +17,45 @@
         const enterText = document.getElementById('text')
         const add = document.getElementById('submit')
         const display = document.getElementById('display')
+        const dateEl = document.getElementById('date')
 
-        let list = ['coffee', 'hello', 'dinner']
+        let list = [{
+            name: 'coffee',
+            date: '2020-2-20'
+        }, {
+            name: 'tea',
+            date: '2020-3-13'
+        }, {
+            name: 'rice',
+            date: '2020-3-29'
+        }]
 
         add.addEventListener('click', () => {
             let newTodo = enterText.value
-            if (newTodo.trim() !== '') {
-                list.push(newTodo);
+            let newDate = dateEl.value
+            const objNew = {
+                name:newTodo,
+                date:newDate
+            }
+            
+            if (newTodo.trim() && newDate !== '') {
+                list.push(objNew);
                 console.log(list);
-                render(newTodo)
-
+                render(objNew, list.length - 1); // Append the new todo to the display
+                enterText.value = ''; // Clear the input field after adding the todo
             }
 
         })
-        function render(newTodo, i) {
+
+        function render(objNew, i) {
             let title = document.createElement('li')
             title.className = 'title'
             title.style.fontSize = '24px'
-            title.textContent = newTodo
-            console.log(title)
+            title.textContent = objNew.name 
+            let spanEl = document.createElement('span')
+            spanEl.textContent = objNew.date 
             display.appendChild(title)
+            title.appendChild(spanEl)
 
 
             let deletbtn = document.createElement('button')
@@ -47,9 +67,6 @@
             })
 
         }
-
-
-
 
         for (let i = 0; i < list.length; i++) {
 
