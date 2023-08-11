@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country Data Display</title>
+</head>
+<body>
+    <h1>Country Data</h1>
+    <div id="countryContainer"></div> <!-- Container for country data -->
+    
+    <script type="module">
+        // Import the country data from script.js
+        import { countries } from './script.js';
+
+        // Get the container element
+        const countryContainer = document.getElementById('countryContainer');
+
+        // Loop through the country data and create elements to display it
+       for (let index = 0; index < countries.length; index++){
+            const countryInfo = `
+                <p><strong>Country:</strong> ${countries[index]}</p>
+                
+                <hr>
+            `;
+
+            // Create a new div element to hold country info
+            const countryDiv = document.createElement('div');
+            countryDiv.innerHTML = countryInfo;
+
+            // Append the country div to the container
+            countryContainer.appendChild(countryDiv);
+        }
+    </script>
+</body>
+</html>
